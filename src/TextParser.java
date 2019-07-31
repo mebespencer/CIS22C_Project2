@@ -13,7 +13,8 @@ public class TextParser {
             linecount++;
             sc.nextLine();
         }
-        System.out.println(linecount + " lines");
+        System.out.println("The Facebook Network file is " + linecount + " lines long.");
+        System.out.println("Currently parsing it into an adjacency list... (this takes a while)");
 
         Graph constructedGraph = new Graph(linecount);
 
@@ -25,7 +26,6 @@ public class TextParser {
         while (sc.hasNextLine() && stopper != 0) {
             firstFriend = new Vertex(sc.next());
             secondFriend = new Vertex(sc.next());
-            //System.out.println(firstFriend.name + secondFriend.name);
 
             if(constructedGraph.getId(firstFriend) == -1) {
                 constructedGraph.idList.add(firstFriend.name);
@@ -39,10 +39,7 @@ public class TextParser {
             constructedGraph.befriend(firstFriend, secondFriend);
             stopper--;
         }
-
-        System.out.println(constructedGraph.idList.size());
-        System.out.println(constructedGraph.idList.get(15));
-        System.out.println(constructedGraph.friendshipArray.get(15).size());
+        System.out.println("Text parsing complete.");
 
         return constructedGraph;
     }

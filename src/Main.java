@@ -1,6 +1,3 @@
-import java.util.LinkedList;
-
-
 public class Main {
 
     public static void main(String[] args)
@@ -9,10 +6,15 @@ public class Main {
        try{
            facebookGraph = TextParser.constructGraphfromText();
        }catch(Exception e){
-           System.out.println("some error thrown");
+           System.out.println("Unable to parse facebook_network.txt. Ensure that it's in the local files for this project.");
        }
-        Vertex testVertex = new Vertex("Lynch");
-       facebookGraph.recommendedFriends(testVertex);
+        Vertex testVertex = new Vertex("Schmidt");
+        Vertex testVertex2 = new Vertex("Jordan");
+
+
+        facebookGraph.recommendedFriends(testVertex);
+
+        facebookGraph.shortestChain(testVertex,testVertex2);
 
     }
 
