@@ -133,6 +133,7 @@ public class Graph {
         for (int n = 0; n < topMutuals.size(); n++) {
             System.out.println(returnList.get(n).name + " with " + topMutuals.get(n) + " mutual friends.");
         }
+        System.out.println("");
 
 
         return returnList;
@@ -162,13 +163,13 @@ public class Graph {
         int currentFriendID;
         LinkedList<Integer> currentusersFriends;
 
-        while ((visited[targetID] != true)) {
+        while ((!visited[targetID])) {
             currentUserID = toVisit.remove();
             currentusersFriends = friendshipArray.get(currentUserID);
 
             for(int i = 0; i < currentusersFriends.size(); i++) {
                 currentFriendID = currentusersFriends.get(i);
-                if(visited[currentFriendID] != true) {
+                if(!visited[currentFriendID]) {
                     visited[currentFriendID] = true;
                     toVisit.add(currentFriendID);
                     visitedBy[currentFriendID] = currentUserID;
@@ -184,12 +185,16 @@ public class Graph {
             visitor = visitedBy[visitor];
         }
 
+        System.out.println("The shortest friendship chain between " + root.name + " and " + target.name + " is:");
         for(Vertex vert : friendChain) {
-            System.out.print(vert.name + " (" + getId(vert) + ") ");
+            System.out.print(vert.name);
             if(vert != friendChain.getLast()) {
-                System.out.print("--> ");
+                System.out.print(" --> ");
             }
         }
+        System.out.println("");
+        System.out.println("");
+
         return friendChain;
     }
 }
